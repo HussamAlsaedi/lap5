@@ -60,7 +60,7 @@ public class EventController {
          return new ApiResponse("Event not in list: "+ id);
     }
 
-    @PutMapping("/findEvent/{id}")
+     @GetMapping("/findEvent/{id}")
     public ArrayList<Event> findEvent(@PathVariable int id)
     {
         ArrayList<Event> matchingEvent = new ArrayList<>();
