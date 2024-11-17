@@ -49,7 +49,7 @@ public class ProjectController {
     }
 
     @PutMapping("/checkStatus/{id}")
-    public ApiResponse checkStatusProject(@PathVariable int id, @RequestBody Project project) {
+    public ApiResponse checkStatusProject(@PathVariable int id) {
 
         for (Project loopProject : projects)
         {
