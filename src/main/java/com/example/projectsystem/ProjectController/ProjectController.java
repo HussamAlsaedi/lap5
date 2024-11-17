@@ -78,7 +78,7 @@ public class ProjectController {
       return findProjects;
     }
 
-    @PutMapping("/findProjeCompanyName/{project}")
+      @GetMapping("/findProjeCompanyName/{project}")
     public ArrayList<Project> findProjeCompanyName(@PathVariable String project)
     {
         ArrayList<Project> matchingProjects = new ArrayList<>();
