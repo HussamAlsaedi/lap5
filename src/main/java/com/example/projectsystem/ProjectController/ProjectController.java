@@ -64,18 +64,18 @@ public class ProjectController {
         return new ApiResponse("Project Already Done");
     }
 
-    @PutMapping("/findProject/{project}")
-    public ApiResponse findProject(@PathVariable String project)
-    {
+    @GetMapping("/findProject/{getTitle}")
+        public ArrayList<Project> findProject(@PathVariable String getTitle)
+        {
+        ArrayList<Project> findProjects = new ArrayList<>();
+
         for (Project loopProject : projects) {
-
-            if (loopProject.getTitle().equals(project))
-            {
-                return  new ApiResponse("We Find The Project"+loopProject.getTitle());
+            if (loopProject.getTitle().equals(getTitle)) {
+                findProjects.add(loopProject);
             }
-
         }
-        return  new ApiResponse("Not found a Project");
+
+      return findProjects;
     }
 
     @PutMapping("/findProjeCompanyName/{project}")
