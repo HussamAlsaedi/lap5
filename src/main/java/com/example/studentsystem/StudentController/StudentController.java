@@ -54,8 +54,21 @@ public class StudentController {
     }
 
 
-    @PostMapping("/Honors")
-    public ApiResponse Honors(@RequestBody Student student)
+    @GetMapping("/honors")
+    public ArrayList<Student> getHonorsStudents() {
+        ArrayList<Student> honorsStudents = new ArrayList<>();
+
+        for (Student student : students) {
+            if (student.getGpa() >= 4) {
+                honorsStudents.add(student);
+            }
+        }
+        return honorsStudents;
+    }
+
+
+    @GetMapping("/aboveAverage")
+    public ArrayList<Student> getHonors()
     {
         double average = 0;
         double sum = 0;
@@ -66,18 +79,11 @@ public class StudentController {
 
         average = sum / students.size();
 
-       for (Student s : students) {
-           if (s.getGpa() > average) {
-               honors.add(s);
-               return new ApiResponse("honors added successfully");
-           }
-       }
-       return new ApiResponse("honors not found");
-    }
-
-    @GetMapping("/getHonors")
-    public ArrayList<Student> getHonors()
-    {
+        for (Student s : students) {
+            if (s.getGpa() > average) {
+                honors.add(s);
+            }
+        }
 
         return honors;
     }
